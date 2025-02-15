@@ -7,10 +7,12 @@ let clickCount = 0;  // 记录点击 No 的次数
 
 // No 按钮的文字变化
 const noTexts = [
+    "不对！不许再说了",
+    "不许选这个！ ",
+    "你在撒谎吧 T ^ T！",
     "？你认真的吗…", 
-    "要不再想想？", 
-    "不许选这个！ ", 
-    "我会很伤心…", 
+    "要不再想想？",  
+    "我会很伤心的…", 
     "不行:("
 ];
 
@@ -32,17 +34,22 @@ noButton.addEventListener("click", function() {
     questionText.style.transform = `translateY(-${moveUp}px)`;
 
     // No 文案变化（前 5 次变化）
-    if (clickCount <= 5) {
+    if (clickCount <= 6) {
         noButton.innerText = noTexts[clickCount - 1];
     }
 
     // 图片变化（前 5 次变化）
-    if (clickCount === 1) mainImage.src = "images/shocked.png"; // 震惊
-    if (clickCount === 2) mainImage.src = "images/think.png";   // 思考
-    if (clickCount === 3) mainImage.src = "images/angry.png";   // 生气
-    if (clickCount === 4) mainImage.src = "images/crying.png";  // 哭
-    if (clickCount >= 5) mainImage.src = "images/crying.png";  // 之后一直是哭
-
+    if (clickCount === 1) mainImage.src = "images/no1.gif"; // 震惊
+    if (clickCount === 2) mainImage.src = "images/no3.gif";   // 思考
+    if (clickCount === 3) mainImage.src = "images/no0.gif";   // 发疯
+    if (clickCount === 4) mainImage.src = "images/cry2.gif";  // 哭
+    if (clickCount >= 5) mainImage.src = "images/cry.gif";  // 之后一直是哭
+    
+    // Adding a new line of text to the page
+    let messageContainer = document.getElementById("messageContainer");
+    let newMessage = document.createElement("p");
+    newMessage.innerText = "Here is a new line of text."; // Customize this text as needed
+    messageContainer.appendChild(newMessage);
 });
 
 // Yes 按钮点击后，进入表白成功页面
@@ -50,7 +57,7 @@ yesButton.addEventListener("click", function() {
     document.body.innerHTML = `
         <div class="yes-screen">
             <h1 class="yes-text">!!!喜欢你!! ( >᎑<)♡︎ᐝ</h1>
-            <img src="images/hug.png" alt="拥抱" class="yes-image">
+            <img src="images/together.gif" alt="拥抱" class="yes-image">
         </div>
     `;
 
